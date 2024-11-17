@@ -23,7 +23,7 @@ public class MyTestCases {
 	String AppiumURl = "http://127.0.0.1:4723/wd/hub";
 
 	AndroidDriver driver;
-	
+
 	Random rand = new Random();
 
 	@BeforeTest
@@ -54,20 +54,64 @@ public class MyTestCases {
 		Assert.assertEquals(ActualResult, expectedResult);
 
 	}
-	
-	@Test()
+
+	@Test(enabled = false)
 	public void ClickOnTwoRandomNumbers() throws MalformedURLException {
-		
+
 		driver = new AndroidDriver(new URL(AppiumURl), cpas);
-		
+
 		List<WebElement> AllButtons = driver.findElements(By.className("android.widget.ImageButton"));
-		
-		for(int i = 0 ; i < AllButtons.size() ; i++) {
-			AllButtons.get(i).click();
+
+		for (int i = 0; i < AllButtons.size(); i++) {
+			if (AllButtons.get(i).getAttribute("resource-id").contains("digit")) {
+				AllButtons.get(i).click();
+
+			}
 		}
-		
-		
+
+		String Actual = driver.findElement(By.id("com.google.android.calculator:id/formula")).getText();
+		String Expected = "7894561230";
+
+		Assert.assertEquals(Actual, Expected);
+
 	}
-	
+
+	@Test()
+	public void ClickOnEvenNumbers() throws MalformedURLException {
+
+		driver = new AndroidDriver(new URL(AppiumURl), cpas);
+
+		List<WebElement> AllButtons = driver.findElements(By.className("android.widget.ImageButton"));
+
+		for (int i = 0; i < AllButtons.size(); i++) {
+
+//			if (AllButtons.get(i).getAttribute("resource-id").contains("digit")) { // sol 1
+//			AllButtons.get(i).click();
+//		}
+
+//			if (AllButtons.get(i).getAttribute("resource-id").contains("2")  // sol 2
+//					|| AllButtons.get(i).getAttribute("resource-id").contains("4")
+//					|| AllButtons.get(i).getAttribute("resource-id").contains("6")
+//					|| AllButtons.get(i).getAttribute("resource-id").contains("8")
+//					|| AllButtons.get(i).getAttribute("resource-id").contains("0")) {
+//				
+//				AllButtons.get(i).click();
+//			}
+
+			if (AllButtons.get(i).getAttribute("resource-id").contains("digit")) { // sol 3
+
+				String theNumber = AllButtons.get(i).getAttribute("resource-id")
+						.replace("com.google.android.calculator:id/digit_", "");
+				int theNumberAsInt = Integer.parseInt(theNumber);
+
+				if (theNumberAsInt % 2 == 0) {
+
+					System.out.println(theNumber);
+					AllButtons.get(i).click();
+				}
+
+			}
+		}
+	}
 
 }

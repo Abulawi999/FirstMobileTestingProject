@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="1" total="2" passed="1" failed="0" skipped="0">
+<testng-results ignored="2" total="3" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-11-16T00:48:34 EET" name="Default suite" finished-at="2024-11-16T00:48:58 EET" duration-ms="24273">
+  <suite started-at="2024-11-17T07:29:29 EET" name="Default suite" finished-at="2024-11-17T07:29:41 EET" duration-ms="11811">
     <groups>
     </groups>
-    <test started-at="2024-11-16T00:48:34 EET" name="Default test" finished-at="2024-11-16T00:48:58 EET" duration-ms="24273">
+    <test started-at="2024-11-17T07:29:29 EET" name="Default test" finished-at="2024-11-17T07:29:41 EET" duration-ms="11811">
       <class name="MyTestCases">
-        <test-method is-config="true" signature="mySetup()[pri:0, instance:MyTestCases@35cabb2a]" started-at="2024-11-16T00:48:34 EET" name="mySetup" finished-at="2024-11-16T00:48:34 EET" duration-ms="9" status="PASS">
+        <test-method is-config="true" signature="mySetup()[pri:0, instance:MyTestCases@7e07db1f]" started-at="2024-11-17T07:29:29 EET" name="mySetup" finished-at="2024-11-17T07:29:29 EET" duration-ms="12" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- mySetup -->
-        <test-method signature="ClickOnTwoRandomNumbers()[pri:0, instance:MyTestCases@35cabb2a]" started-at="2024-11-16T00:48:34 EET" name="ClickOnTwoRandomNumbers" finished-at="2024-11-16T00:48:58 EET" duration-ms="24241" status="PASS">
+        <test-method signature="ClickOnEvenNumbers()[pri:0, instance:MyTestCases@7e07db1f]" started-at="2024-11-17T07:29:29 EET" name="ClickOnEvenNumbers" finished-at="2024-11-17T07:29:41 EET" duration-ms="11775" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- ClickOnTwoRandomNumbers -->
+        </test-method> <!-- ClickOnEvenNumbers -->
       </class> <!-- MyTestCases -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
