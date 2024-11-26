@@ -37,7 +37,7 @@ public class MyTestCases {
 
 	}
 
-	@Test(enabled = false)
+	@Test(priority = 1, enabled = false)
 	public void AddTwoNumber() throws MalformedURLException {
 
 		driver = new AndroidDriver(new URL(AppiumURl), cpas);
@@ -55,7 +55,7 @@ public class MyTestCases {
 
 	}
 
-	@Test(enabled = false)
+	@Test(priority = 2, enabled = false)
 	public void ClickOnTwoRandomNumbers() throws MalformedURLException {
 
 		driver = new AndroidDriver(new URL(AppiumURl), cpas);
@@ -76,7 +76,7 @@ public class MyTestCases {
 
 	}
 
-	@Test()
+	@Test(priority = 3, enabled = false)
 	public void ClickOnEvenNumbers() throws MalformedURLException {
 
 		driver = new AndroidDriver(new URL(AppiumURl), cpas);
@@ -112,6 +112,35 @@ public class MyTestCases {
 
 			}
 		}
+	}
+
+	@Test(priority = 4, enabled = true)
+	public void PriorityTest() throws MalformedURLException {
+
+		driver = new AndroidDriver(new URL(AppiumURl), cpas);
+
+//		driver.findElement(By.cssSelector("android.widget.ImageView")).click();
+
+		driver.findElement(By.id("com.google.android.calculator:id/parens")).click();
+
+		List<WebElement> AllButtons = driver.findElements(By.className("android.widget.ImageButton"));
+		for (int i = 0; i < AllButtons.size(); i++) {
+			if (AllButtons.get(i).getAttribute("resource-id").contains("digit")) {
+				String theNumber = AllButtons.get(i).getAttribute("resource-id")
+						.replace("com.google.android.calculator:id/digit_", "");
+				int theNumberAsInt = Integer.parseInt(theNumber);
+				if (theNumberAsInt % 2 != 0) {
+					System.out.println(theNumber);
+					AllButtons.get(i).click();
+				}
+			}
+		}
+		driver.findElement(By.id("com.google.android.calculator:id/op_mul")).click();
+		driver.findElement(By.id("com.google.android.calculator:id/digit_6")).click();
+		driver.findElement(By.id("com.google.android.calculator:id/parens")).click();
+		driver.findElement(By.id("com.google.android.calculator:id/op_add")).click();
+		driver.findElement(By.id("com.google.android.calculator:id/digit_5")).click();
+
 	}
 
 }
